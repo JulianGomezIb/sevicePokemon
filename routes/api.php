@@ -15,3 +15,4 @@ use App\Http\Controllers\UserController;
 */
 
 Route::post('post/create/user',                  [UserController::class, 'createUser']);
+Route::post('post/logim/user',                   [UserController::class, 'login']);
