@@ -9,7 +9,7 @@ class UserController extends Controller{
 
 
     public function createUser(Request $request){
-        return UserService::createUser($request);
+        return UserService::createUser(new Request($request->params));
     }
 
     public function updateUser(Request $request){
@@ -17,7 +17,11 @@ class UserController extends Controller{
     }
 
     public function login(Request $request){
-        return UserService::login($request);
+        return UserService::login(new Request($request->params));
+    }
+
+    public function favorito(Request $request){
+        return UserService::favorito(new Request($request->params));
     }
 
 }

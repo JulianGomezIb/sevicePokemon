@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\ApiResponse;
 use App\Models\ApiValidator;
 use App\Models\Usuario;
+use App\Models\Favorito;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -44,9 +45,23 @@ class UserService{
             $data = null;
         }
 
+        return is_null($data) ? null:$data;
+    }
+    
+     public static function favorito($request){
+
+        if(isset($request)){
+            $fav = new Favorito();
+
+            $fav->id_usuario              = $request['id_usuario'];
+            $fav->ref_api          = $request['ref_api'];
+
+            $data = $fav->save();
+
+        } else {
+            $data = null;
+        }
         return $data;
     }
-
-
 
 }

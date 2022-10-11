@@ -13,6 +13,8 @@ use App\Http\Controllers\UserController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::post('post/create/user',                  [UserController::class, 'createUser']);
-Route::post('post/logim/user',                   [UserController::class, 'login']);
+Route::group(['middleware' => ['cors']], function () {
+    Route::post('post/create/user',                  [UserController::class, 'createUser']);
+    Route::post('post/login/user',                   [UserController::class, 'login']);
+    Route::post('post/favoritos',                   [UserController::class, 'favorito']);
+});
